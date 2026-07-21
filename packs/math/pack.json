@@ -1,0 +1,45 @@
+{
+  "id": "math",
+  "name": "Mathematics",
+  "version": "1.0.0",
+  "description": "Arithmetic, algebra, calculus, and quantitative reasoning. Precise calculation is delegated to a calculator tool, not the model.",
+  "author": "your-name",
+  "license": "MIT",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+
+  "routing": {
+    "keywords": [
+      "math", "mathematics", "calculate", "calculation", "compute",
+      "quantitative", "number", "numbers", "sum", "add", "plus",
+      "subtract", "minus", "difference", "multiply", "times", "product",
+      "divide", "division", "quotient", "percent", "percentage",
+      "average", "mean", "median", "ratio", "fraction", "equation",
+      "solve", "algebra", "calculus", "derivative", "integral",
+      "area", "volume", "geometry", "square", "root", "power",
+      "arithmetic", "total"
+    ],
+    "description_for_router": "Use this pack for anything involving numbers, calculation, or mathematical reasoning: arithmetic, percentages, algebra, geometry, and solving equations."
+  },
+
+  "files": {
+    "prompt": "prompt.md",
+    "examples": "examples.md",
+    "knowledge": [
+      "knowledge/percentages.md"
+    ],
+    "vectors": "vectors.json"
+  },
+
+  "tools": [
+    {
+      "name": "calculator",
+      "description": "Evaluates a single arithmetic expression and returns the exact numeric result. Use for EVERY calculation instead of computing it in your head.",
+      "input": { "expression": "string" },
+      "output": { "result": "number" }
+    }
+  ],
+
+  "created": "2026-07-20",
+  "updated": "2026-07-20"
+}
