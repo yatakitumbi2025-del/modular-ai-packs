@@ -1,0 +1,42 @@
+{
+  "id": "programming",
+  "name": "Programming",
+  "version": "1.0.0",
+  "description": "Writing, explaining, and debugging code across languages. Anything that must be verified to actually run is delegated to a code-runner tool, not trusted from the model.",
+  "author": "your-name",
+  "license": "MIT",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+
+  "routing": {
+    "keywords": [
+      "code", "coding", "program", "function", "class", "method", "bug",
+      "debug", "error", "exception", "algorithm", "api", "loop", "syntax",
+      "compile", "runtime", "refactor", "python", "javascript", "typescript",
+      "java", "c++", "rust", "go", "sql", "regex", "git"
+    ],
+    "description_for_router": "Use this pack for anything about writing, reading, explaining, fixing, or reasoning about source code and software."
+  },
+
+  "files": {
+    "prompt": "prompt.md",
+    "examples": "examples.md",
+    "knowledge": [
+      "knowledge/python-comprehensions.md"
+    ],
+    "vectors": "vectors.json"
+  },
+
+  "tools": [
+    {
+      "name": "code_runner",
+      "description": "Executes a code snippet in a sandbox and returns stdout, stderr, and exit code. Use to verify that generated code actually runs and produces the claimed output.",
+      "languages": ["python"],
+      "input": { "language": "string", "source": "string" },
+      "output": { "stdout": "string", "stderr": "string", "exit_code": "integer" }
+    }
+  ],
+
+  "created": "2026-07-20",
+  "updated": "2026-07-20"
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/modular-ai/pack.schema.json",
+  "title": "Domain Pack Manifest",
+  "description": "Contract every pack.json must satisfy.",
+  "type": "object",
+  "required": ["id", "name", "version", "description", "embedding_model", "routing", "files"],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_-]+$",
+      "description": "Unique lowercase id, must match the folder name."
+    },
+    "name": { "type": "string" },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "description": "Semantic version, e.g. 1.0.0"
+    },
+    "description": { "type": "string" },
+    "author": { "type": "string" },
+    "license": { "type": "string" },
+    "embedding_model": {
+      "type": "string",
+      "description": "Must match the registry's embedding_model so query and pack vectors are comparable."
+    },
+    "embedding_dimension": { "type": "integer", "minimum": 1 },
+    "routing": {
+      "type": "object",
+      "required": ["keywords", "description_for_router"],
+      "properties": {
+        "keywords": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Cheap keyword-based routing signals."
+        },
+        "description_for_router": {
+          "type": "string",
+          "description": "One sentence the router can embed for semantic routing."
+        }
+      }
+    },
+    "files": {
+      "type": "object",
+      "required": ["prompt"],
+      "properties": {
+        "prompt": { "type": "string" },
+        "examples": { "type": "string" },
+        "knowledge": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "vectors": { "type": "string" }
+      }
+    },
+    "tools": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "created": { "type": "string" },
+    "updated": { "type": "string" }
+  }
+}

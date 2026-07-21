@@ -1,0 +1,28 @@
+{
+  "registry_version": "1.0",
+  "name": "Modular AI Domain Registry",
+  "description": "Lightweight, swappable domain packs for an on-device modular AI. The model runs locally; packs are fetched on demand.",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "updated": "2026-07-20",
+  "packs": [
+    {
+      "id": "programming",
+      "name": "Programming",
+      "description": "Writing, explaining, and debugging code across languages. Anything that must be verified to actually run is delegated to a code-runner tool, not trusted from the model.",
+      "version": "1.0.0",
+      "tags": ["code", "programming", "software", "debugging"],
+      "size_bytes": 20480,
+      "manifest": "packs/programming/pack.json"
+    },
+    {
+      "id": "math",
+      "name": "Mathematics",
+      "description": "Arithmetic, algebra, calculus, and quantitative reasoning. Precise calculation is delegated to a calculator tool, not the model.",
+      "version": "1.0.0",
+      "tags": ["math", "calculation", "quantitative"],
+      "size_bytes": 8192,
+      "manifest": "packs/math/pack.json"
+    }
+  ]
+}
