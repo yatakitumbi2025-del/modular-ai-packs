@@ -1,10 +1,10 @@
 {
   "registry_version": "1.0",
   "name": "Modular AI Domain Registry",
-  "description": "Lightweight, swappable domain packs for an on-device modular AI. The model runs locally; packs are fetched on demand.",
-  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
-  "embedding_dimension": 384,
-  "updated": "2026-07-20",
+  "description": "Lightweight, swappable domain packs for a modular coding AI. The core runs locally; packs are fetched on demand.",
+  "embedding_model": "jina-embeddings-v3",
+  "embedding_dimension": 512,
+  "updated": "2026-07-21",
   "packs": [
     {
       "id": "programming",
@@ -14,6 +14,15 @@
       "tags": ["code", "programming", "software", "debugging"],
       "size_bytes": 20480,
       "manifest": "packs/programming/pack.json"
+    },
+    {
+      "id": "algorithms",
+      "name": "Algorithms and Data Structures",
+      "description": "Choosing the right data structure and algorithm, and knowing what it costs. Complexity analysis, structure tradeoffs, classic problem patterns, and accidental-quadratic pitfalls.",
+      "version": "1.0.0",
+      "tags": ["algorithms", "complexity", "performance", "data-structures"],
+      "size_bytes": 30720,
+      "manifest": "packs/algorithms/pack.json"
     },
     {
       "id": "math",

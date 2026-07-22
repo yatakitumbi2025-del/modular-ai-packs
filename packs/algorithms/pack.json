@@ -1,0 +1,51 @@
+{
+  "id": "algorithms",
+  "name": "Algorithms and Data Structures",
+  "version": "1.0.0",
+  "description": "Choosing the right data structure and algorithm, and knowing what it costs. Complexity analysis, structure tradeoffs, classic problem patterns, and the accidental-quadratic pitfalls that make working code slow.",
+  "author": "your-name",
+  "license": "MIT",
+  "embedding_model": "jina-embeddings-v3",
+  "embedding_dimension": 512,
+
+  "routing": {
+    "keywords": [
+      "algorithm", "algorithms", "complexity", "big-o", "bigo",
+      "efficient", "efficiency", "optimize", "optimise", "performance",
+      "slow", "faster", "speed", "scale", "scalability",
+      "structure", "structures", "array", "dict", "dictionary",
+      "hashmap", "hash", "set", "deque", "queue", "stack", "heap",
+      "tree", "graph", "linked", "node", "binary",
+      "sort", "sorting", "sorted", "search", "searching",
+      "recursion", "recursive", "memoization", "dp",
+      "traversal", "bfs", "dfs", "cache", "lookup", "duplicate", "duplicates",
+      "nested", "quadratic", "linear", "logarithmic"
+    ],
+    "description_for_router": "Use this pack for questions about algorithmic efficiency and data structure choice: Big-O time and space complexity, which structure to use (list vs set vs dict vs deque vs heap), sorting and searching, recursion and dynamic programming, graph and tree traversal, why code is slow, and how to make it faster."
+  },
+
+  "files": {
+    "prompt": "prompt.md",
+    "examples": "examples.md",
+    "knowledge": [
+      "knowledge/complexity.md",
+      "knowledge/structures.md",
+      "knowledge/patterns.md",
+      "knowledge/pitfalls.md"
+    ],
+    "vectors": "vectors.json"
+  },
+
+  "tools": [
+    {
+      "name": "code_runner",
+      "description": "Executes a code snippet in a sandbox and returns stdout, stderr, and exit code. Use to verify correctness AND to demonstrate performance differences empirically with timeit.",
+      "languages": ["python"],
+      "input": { "language": "string", "source": "string" },
+      "output": { "stdout": "string", "stderr": "string", "exit_code": "integer" }
+    }
+  ],
+
+  "created": "2026-07-21",
+  "updated": "2026-07-21"
+}
