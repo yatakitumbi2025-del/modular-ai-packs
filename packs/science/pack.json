@@ -68,7 +68,7 @@
       "heat",
       "wave"
     ],
-    "description_for_router": "Answers physics, chemistry and biology questions, including calculations: molarity and moles, grams of solute in a solution, balancing chemical equations, forces and energy, plus explanations of cells, DNA and photosynthesis."
+    "description_for_router": "Answers physics, chemistry and biology questions, including calculations: molarity and moles, grams of solute in a solution, balancing chemical equations, a block sliding down a ramp, speed at the bottom, falling objects, acceleration and momentum, plus explanations of cells, DNA and photosynthesis."
   },
   "files": {
     "prompt": "prompt.md",
