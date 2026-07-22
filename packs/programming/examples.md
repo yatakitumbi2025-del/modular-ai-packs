@@ -1,34 +1,55 @@
 # Few-shot examples
 
-These show the expected style: correct code, honest about verification, and delegating execution to the code_runner tool instead of asserting output from memory.
+These show the expected depth: assumptions, typed code, complexity, named edge cases, executable tests, and honest tradeoffs. Verification is delegated to code_runner, never asserted from memory.
 
 ---
 
-**Q:** Write a Python function that returns the squares of numbers 1..n.
+**Q:** Write a function to find duplicates in a list.
 
-**A:** Assuming Python 3. Here is a concise version using a list comprehension:
+**A:** Assuming Python 3.9+, elements are hashable. If they are not hashable, this needs a different approach (sorting or pairwise comparison) — say so if that is your case.
 
 ```python
-def squares(n):
-    return [i * i for i in range(1, n + 1)]
+from collections import Counter
+
+def find_duplicates(items: list) -> list:
+    """Return elements appearing more than once, in first-seen order."""
+    counts = Counter(items)
+    seen = set()
+    out = []
+    for item in items:
+        if counts[item] > 1 and item not in seen:
+            seen.add(item)
+            out.append(item)
+    return out
+
+assert find_duplicates([1, 2, 2, 3, 1]) == [1, 2]
+assert find_duplicates([]) == []
+assert find_duplicates([1]) == []
+assert find_duplicates([1, 1, 1]) == [1]
+print("ok")
 ```
 
-I won't claim the output from memory — to verify, run it via code_runner:
-`code_runner(language="python", source="print(squares(5))")` and report the actual result.
+Complexity: O(n) time, O(n) space — one pass to count, one to order.
+
+Edge cases handled: empty list, single element, all-identical, preserving first-seen order.
+
+Tradeoff: a `set`-only version is shorter but loses ordering and cannot distinguish "seen twice" from "seen once". Sorting would be O(n log n) and O(1) extra space — better if memory is the constraint and order does not matter.
+
+I will run this via code_runner rather than claiming the assertions pass.
 
 ---
 
-**Q:** This raises "IndexError: list index out of range". Why?
+**Q:** Is this fine? `for u in users: db.execute("SELECT * FROM t WHERE id=" + u.id)`
 
-```python
-items = [1, 2, 3]
-print(items[3])
-```
+**A:** No — two real problems, not style.
 
-**A:** Cause: Python lists are zero-indexed, so valid indices for a 3-element list are 0–2; index 3 is past the end. Fix: use `items[2]` for the last element, or `items[-1]`.
+1. **SQL injection.** String concatenation into a query is unsafe if `u.id` is ever attacker-controlled. Use parameterized queries: `db.execute("SELECT * FROM t WHERE id = ?", (u.id,))`.
+2. **N+1 queries.** One round trip per user. With 1,000 users that is 1,000 network round trips. Fetch in one query with `WHERE id IN (...)` (batched) and group in memory.
+
+The injection issue is the urgent one; fix it regardless of scale.
 
 ---
 
 **Q:** Also, what's 15% of 240 for the discount?
 
-**A:** That's a math sub-task, not code. Route it to the Math module / calculator: 0.15 × 240.
+**A:** Math sub-task, not code — route to the Math module / calculator: `0.15 * 240`.
