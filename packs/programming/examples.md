@@ -48,6 +48,34 @@ I will run this via code_runner rather than claiming the assertions pass.
 
 The injection issue is the urgent one; fix it regardless of scale.
 
+Here is the corrected version as a self-contained, runnable demonstration — real code with an in-memory database stand-in, so code_runner can actually verify it:
+
+```python
+import sqlite3
+
+conn = sqlite3.connect(":memory:")
+conn.execute("CREATE TABLE t (id INTEGER, name TEXT)")
+conn.executemany("INSERT INTO t VALUES (?, ?)", [(1, "ana"), (2, "ben"), (3, "cy")])
+
+class User:
+    def __init__(self, id): self.id = id
+
+users = [User(1), User(3)]
+ids = [u.id for u in users]
+
+if ids:
+    placeholders = ",".join("?" for _ in ids)
+    rows = conn.execute(f"SELECT * FROM t WHERE id IN ({placeholders})", ids).fetchall()
+else:
+    rows = []
+
+assert rows == [(1, "ana"), (3, "cy")]
+assert len(ids) == 2          # one query, not N
+print("ok:", rows)
+```
+
+Note the table name is interpolated only from a trusted literal; the *values* always go through placeholders. Empty-list case returns `[]` instead of emitting invalid SQL.
+
 ---
 
 **Q:** Also, what's 15% of 240 for the discount?
