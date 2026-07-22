@@ -11,7 +11,12 @@
       "name": "Programming",
       "description": "Writing, explaining, and debugging code across languages. Anything that must be verified to actually run is delegated to a code-runner tool, not trusted from the model.",
       "version": "1.0.0",
-      "tags": ["code", "programming", "software", "debugging"],
+      "tags": [
+        "code",
+        "programming",
+        "software",
+        "debugging"
+      ],
       "size_bytes": 20480,
       "manifest": "packs/programming/pack.json"
     },
@@ -20,7 +25,12 @@
       "name": "Algorithms and Data Structures",
       "description": "Choosing the right data structure and algorithm, and knowing what it costs. Complexity analysis, structure tradeoffs, classic problem patterns, and accidental-quadratic pitfalls.",
       "version": "1.0.0",
-      "tags": ["algorithms", "complexity", "performance", "data-structures"],
+      "tags": [
+        "algorithms",
+        "complexity",
+        "performance",
+        "data-structures"
+      ],
       "size_bytes": 30720,
       "manifest": "packs/algorithms/pack.json"
     },
@@ -29,9 +39,28 @@
       "name": "Mathematics",
       "description": "Arithmetic, algebra, calculus, and quantitative reasoning. Precise calculation is delegated to a calculator tool, not the model.",
       "version": "1.0.0",
-      "tags": ["math", "calculation", "quantitative"],
+      "tags": [
+        "math",
+        "calculation",
+        "quantitative"
+      ],
       "size_bytes": 8192,
       "manifest": "packs/math/pack.json"
+    },
+    {
+      "id": "science",
+      "name": "Science",
+      "description": "Physics, chemistry, and biology fundamentals \u2014 units and dimensional analysis, mechanics, energy, stoichiometry, cell biology, and genetics.",
+      "version": "0.1.0",
+      "tags": [
+        "science",
+        "physics",
+        "chemistry",
+        "biology",
+        "stem"
+      ],
+      "size_bytes": 31701,
+      "manifest": "packs/science/pack.json"
     }
   ]
 }
