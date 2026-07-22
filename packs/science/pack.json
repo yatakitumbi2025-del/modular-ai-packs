@@ -68,7 +68,7 @@
       "heat",
       "wave"
     ],
-    "description_for_router": "Questions about the physical and natural world: forces, motion, energy, heat, electricity, atoms, molecules, chemical reactions and balancing equations, moles and concentration, cells, DNA, evolution, ecology, unit conversion and scientific notation."
+    "description_for_router": "Answers physics, chemistry and biology questions, including calculations: molarity and moles, grams of solute in a solution, balancing chemical equations, forces and energy, plus explanations of cells, DNA and photosynthesis."
   },
   "files": {
     "prompt": "prompt.md",
